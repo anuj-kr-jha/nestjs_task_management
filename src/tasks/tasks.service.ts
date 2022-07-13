@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ETaskStatus, ITask } from './task.model';
+import { ETaskStatus, ITask } from './task.model.js';
 // import { nanoid } from 'nanoid';
 
 @Injectable()

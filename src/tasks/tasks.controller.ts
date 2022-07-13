@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Patch } from '@nestjs/common';
-import { ETaskStatus } from './task.model';
-import { TasksService } from './tasks.service';
+import { ETaskStatus } from './task.model.js';
+import { TasksService } from './tasks.service.js';
 
 @Controller('tasks') // - this is responsible for the tasks/ endpoint
 export class TasksController {
