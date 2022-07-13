@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ETaskStatus, ITask } from './task.model.js';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
 @Injectable()
 export class TasksService {
@@ -31,8 +31,7 @@ export class TasksService {
 
   create(title: string, description: string): ITask {
     const task: ITask = {
-      // id: nanoid(5), // - require() of ES Module not supported. Instead change the require of index.js to a dynamic import() which is available in all CommonJS modules.
-      id: (this.tasks.length + 1).toString(),
+      id: nanoid(5),
       title: title,
       description: description,
       status: ETaskStatus.OPEN,
