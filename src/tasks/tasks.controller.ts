@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Patch } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Patch, Query } from '@nestjs/common';
 import { ETaskStatus, ITask } from './tasks.model.js';
 import { TasksService } from './tasks.service.js';
 import { CreateTaskDto } from './dto/create-task.dto.js';
+import { GetTaskFilterDto } from './dto/get-tasks-filter.dto.js';
 
 @Controller('tasks') // - this is responsible for the tasks/ endpoint
 export class TasksController {
@@ -10,9 +11,10 @@ export class TasksController {
   }
 
   @Get()
-  getAllTasks() {
-    return this.tasksService.getAll();
+  getTasks(@Query() filterDto: GetTaskFilterDto) {
+    return this.tasksService.getTasks(filterDto);
   }
+
 
   @Get('/:id')
   getTask(@Param('id') id: string) {
