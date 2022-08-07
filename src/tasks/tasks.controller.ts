@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Patch } from '@nestjs/common';
-import { ETaskStatus } from './task.model.js';
+import { ETaskStatus, ITask } from './tasks.model.js';
 import { TasksService } from './tasks.service.js';
+import { CreateTaskDto } from './dto/create-task.dto.js';
 
 @Controller('tasks') // - this is responsible for the tasks/ endpoint
 export class TasksController {
@@ -19,8 +20,8 @@ export class TasksController {
   }
 
   @Post('/create')
-  createTask(@Body('title') title: string, @Body('description') description: string) {
-    return this.tasksService.create(title, description);
+  createTask(@Body() createTaskDto: CreateTaskDto): ITask {
+    return this.tasksService.create(createTaskDto);
   }
 
   @Delete('/:id')
